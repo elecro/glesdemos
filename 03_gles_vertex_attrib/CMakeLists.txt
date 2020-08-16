@@ -1,0 +1,1 @@
+add_program(03_gles_vertex_attrib gles_triangle_vertex_attrib.cpp)

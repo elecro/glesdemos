@@ -1,0 +1,1 @@
+add_program(04_gles_uniform gles_triangle_uniform.cpp)
