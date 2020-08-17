@@ -1,0 +1,2 @@
+add_program(x_gles_compute_simple gles_compute_simple.cpp)
+add_program(x_gles_compute_collision gles_compute_collision.cpp)
