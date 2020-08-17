@@ -3,6 +3,7 @@ project(glesexamples)
 
 include(FindPkgConfig)
 
+pkg_check_modules(GLFW3 glfw3)
 pkg_check_modules(GLESv2 glesv2)
 
 include_directories(
