@@ -27,3 +27,6 @@ add_subdirectory(03_gles_vertex_attrib)
 add_subdirectory(04_gles_uniform)
 add_subdirectory(04_gles_texture)
 add_subdirectory(05_gles_glm)
+add_subdirectory(06_gles_vao)
+
+add_subdirectory(x_gles_wireframe)

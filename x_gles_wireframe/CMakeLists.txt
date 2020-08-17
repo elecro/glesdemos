@@ -1,0 +1,1 @@
+add_program(x_gles_wireframe gles_wireframe.cpp)
