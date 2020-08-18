@@ -71,7 +71,7 @@ void main() {
     // 2nd vertice: vec3(0.0f, 1.0f, 0.0f)
     // 3rd vertice: vec3(0.0f, 0.0f, 1.0f)
     // This will be used in the frament shader.
-    wirewireframeDistance = vec3(0.0f);
+    wireframeDistance = vec3(0.0f);
     wireframeDistance[gl_VertexID % 3] = 1.0f;
 }
 )";
