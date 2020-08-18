@@ -230,6 +230,8 @@ int main(int argc, char **argv) {
         glGenerateMipmap(GL_TEXTURE_2D);
 
         stbi_image_free(data);
+
+        glBindTexture(GL_TEXTURE_2D, 0);
     }
 
     // 13. Texture coordinates.
@@ -253,6 +255,32 @@ int main(int argc, char **argv) {
 
         // 10.3. Enable the usage of the vertex input array.
         glEnableVertexAttribArray(aTexLoc);
+    }
+
+    // 14. Connect the "texture" to the sampler in the shader
+    {
+        // 14.1. Activate the texture unit 1.
+        /* Using the texture unit 1 by desgin here for example purposes. */
+        glActiveTexture(GL_TEXTURE0 + 1);
+
+        // 14.2. Bind the "texture" to the active texture unit.
+        /* After this the GL_TEXTURE0 texture unit is bound to the "texture" object. */
+        glBindTexture(GL_TEXTURE_2D, texture);
+
+        // 14.3. No need to keep the active texture unit.
+        glActiveTexture(0);
+
+        // 14.3. Query the "image" sampler's location.
+        int imageSamplerLoc = glGetUniformLocation(shader_program, "image");
+
+        // Switch to the shader to set the uniform value.
+        glUseProgram(shader_program);
+
+        // 14.x. Set the sampler's "value" to the texture unit 1.
+        glUniform1i(imageSamplerLoc, 0 + 1);
+
+        // Disable the program for now.
+        glUseProgram(0);
     }
 
     // X. Create a render loop.
