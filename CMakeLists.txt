@@ -5,6 +5,7 @@ include(FindPkgConfig)
 
 pkg_check_modules(GLFW3 glfw3)
 pkg_check_modules(GLESv2 glesv2)
+pkg_check_modules(GLM glm)
 
 include_directories(
   ${GLFW3_INCLUDE_DIRS}
@@ -28,6 +29,7 @@ add_subdirectory(04_gles_uniform)
 add_subdirectory(04_gles_texture)
 add_subdirectory(05_gles_glm)
 add_subdirectory(06_gles_vao)
+add_subdirectory(07_gles_cube)
 
 add_subdirectory(x_gles_compute)
 add_subdirectory(x_gles_wireframe)
