@@ -1,0 +1,2 @@
+add_program(08_gles_triangle_fbo_blit gles_triangle_fbo_blit.cpp)
+add_program(08_gles_triangle_fbo_sampling gles_triangle_fbo_sampling.cpp)
