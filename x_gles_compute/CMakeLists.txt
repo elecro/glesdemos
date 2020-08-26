@@ -1,2 +1,5 @@
 add_program(x_gles_compute_simple gles_compute_simple.cpp)
 add_program(x_gles_compute_collision gles_compute_collision.cpp)
+
+add_program(x_gles_compute_pure gles_compute_pure.cpp)
+target_link_libraries(x_gles_compute_pure ${EGL_LIBRARIES})
