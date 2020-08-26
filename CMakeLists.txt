@@ -31,6 +31,7 @@ add_subdirectory(05_gles_glm)
 add_subdirectory(06_gles_vao)
 add_subdirectory(07_gles_cube)
 add_subdirectory(08_gles_fbo)
+add_subdirectory(09_gles_depth)
 
 add_subdirectory(x_gles_compute)
 add_subdirectory(x_gles_wireframe)
