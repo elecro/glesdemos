@@ -197,25 +197,25 @@ int main(int argc, char **argv) {
 
     // . Upload the initial buffer data.
     int itemCount = 10 * (2 + 2); // ivec2 + (2 * int padding)
-	size_t calcBufferSize = itemCount * sizeof(int); // ivec2 * 10 in std140 layout
+    size_t calcBufferSize = itemCount * sizeof(int); // ivec2 * 10 in std140 layout
     unsigned int calcBufferId;
     {
         glGenBuffers(1, &calcBufferId);
         glBindBuffer(GL_ARRAY_BUFFER, calcBufferId);
         glBufferData(GL_ARRAY_BUFFER, calcBufferSize, NULL, GL_STATIC_DRAW);
-		{
+        {
             // . Map the buffer to CPU so a simple copy/assignment can "upload" the data to GPU.
-			void *dataPtr = glMapBufferRange(GL_ARRAY_BUFFER, 0, calcBufferSize, GL_MAP_WRITE_BIT); //| GL_MAP_FLUSH_EXPLICIT_BIT);
-			int *inputPtr = (int*)dataPtr;
+            void *dataPtr = glMapBufferRange(GL_ARRAY_BUFFER, 0, calcBufferSize, GL_MAP_WRITE_BIT); //| GL_MAP_FLUSH_EXPLICIT_BIT);
+            int *inputPtr = (int*)dataPtr;
             // Generate the input data.
             /* The input data is: 1, 2, 3, 4, ....   */
-			for (int idx = 0; idx < itemCount; idx++) {
-				inputPtr[idx] = idx + 1;
-			}
+            for (int idx = 0; idx < itemCount; idx++) {
+                inputPtr[idx] = idx + 1;
+            }
 
-			//glFlushMappedBufferRange(GL_ARRAY_BUFFER, 0, calcBufferSize);
-			glUnmapBuffer(GL_ARRAY_BUFFER);
-		}
+            //glFlushMappedBufferRange(GL_ARRAY_BUFFER, 0, calcBufferSize);
+            glUnmapBuffer(GL_ARRAY_BUFFER);
+            }
 
         glBindBuffer(GL_ARRAY_BUFFER, 0);
     }
@@ -231,19 +231,19 @@ int main(int argc, char **argv) {
         glUseProgram(0);
     }
 
-	{
+    {
         glBindBuffer(GL_ARRAY_BUFFER, calcBufferId);
-		{
-			void *dataPtr = glMapBufferRange(GL_ARRAY_BUFFER, 0, calcBufferSize, GL_MAP_READ_BIT);
-			int *readPtr = (int*)dataPtr;
-			for (int idx = 0; idx < itemCount; idx++) {
-				printf("-> pos: %2d => %2d\n", idx + 1, readPtr[idx]);
-			}
-			glUnmapBuffer(GL_ARRAY_BUFFER);
-		}
+        {
+            void *dataPtr = glMapBufferRange(GL_ARRAY_BUFFER, 0, calcBufferSize, GL_MAP_READ_BIT);
+            int *readPtr = (int*)dataPtr;
+            for (int idx = 0; idx < itemCount; idx++) {
+                printf("-> pos: %2d => %2d\n", idx + 1, readPtr[idx]);
+            }
+            glUnmapBuffer(GL_ARRAY_BUFFER);
+        }
 
         glBindBuffer(GL_ARRAY_BUFFER, 0);
-	}
+    }
 
     // XX. Destroy the compute program.
     glDeleteProgram(compute_program);
