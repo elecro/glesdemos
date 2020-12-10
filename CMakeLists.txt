@@ -3,7 +3,19 @@ project(glesexamples)
 
 include(FindPkgConfig)
 
-pkg_check_modules(GLFW3 glfw3)
+if(USE_SYSTEM_GLFW)
+  pkg_check_modules(GLFW3 glfw3)
+  message("Using GLFW: System")
+else()
+  set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
+  set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+  set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+
+  add_subdirectory(thirdparty/glfw)
+  message("Using GLFW: thirdparty/")
+  set(GLFW3_LIBRARIES glfw)
+endif()
+
 pkg_check_modules(GLESv2 glesv2)
 pkg_check_modules(GLM glm)
 

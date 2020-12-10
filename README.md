@@ -7,6 +7,12 @@ $ cmake -Bbuild -H.
 $ make -C build
 ```
 
+## Using system GLFW
+
+```
+$ cmake -Bbuild -H. -DUSE_SYSTEM_GLFW=1
+```
+
 ## gles_glfw
 
 Base code to create an OpenGL ES context and window with glfw.
